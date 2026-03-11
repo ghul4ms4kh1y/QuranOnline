@@ -11,7 +11,15 @@ export default function CardComp({ data }) {
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                 
                 <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10">
-                  <span className="font-semibold text-white">{item.nomor}</span>
+                    <svg viewBox="0 0 100 100" className="absolute w-full h-full" fill="none">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#d97706" ></circle>
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="#f59e0b" ></circle>
+                        <circle cx="50" cy="6" r="2.5" fill="#d97706"></circle>
+                        <circle cx="50" cy="94" r="2.5" fill="#d97706"></circle>
+                        <circle cx="-6" cy="50" r="2.5" fill="#d97706"></circle>
+                        <circle cx="94" cy="50" r="2.5" fill="#d97706"></circle>
+                    </svg>
+                    <span className="font-semibold text-white">{item.nomor}</span>
                 </div>
 
                 <div className="flex-1 min-w-0 text-left">
