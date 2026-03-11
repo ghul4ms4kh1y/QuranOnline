@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardAyatComp from "../components/CardAyatComp";
 
-export default function SurahPage() {
+export default function Surat() {
   const {suratId} = useParams();
-  console.log("suratId:", suratId);
   const [surats, setSurats] = useState([]);
 
   async function getDetailSurats() {

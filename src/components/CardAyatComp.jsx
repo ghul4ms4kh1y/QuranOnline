@@ -6,7 +6,7 @@ export default function CardAyatComp({ data }) {
   return (
     <Card>
         {data.map((item) => (
-        <div key={item} className="border-b border-gray-200 py-8">
+        <div key={item.nomorAyat} className="border-b border-gray-200 py-8">
           {/* Right Side */}
           <div className="flex items-center justify-between gap-3 ">
             <Button color="dark" outline>
