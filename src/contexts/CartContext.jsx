@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ModalPaymentComp from "../components/ModalPaymentComp";
 
 export const CartContext = createContext();
 
@@ -90,6 +91,7 @@ export default function CartProvider({children}) {
             <CartContext.Provider value={{cart, updateCart, updateQtyProduct, deleteProduct, deleteAll, checkoutProduct}}>
                 {children}
             </CartContext.Provider>
+            <ModalPaymentComp handleCloseModalPayment={handleCloseModalPayment} openModal={openModal}/>
         </>
     )
 }

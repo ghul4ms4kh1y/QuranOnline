@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react"
 import { Spinner } from "flowbite-react"
 import CartComp from "./components/CardComp"
+import FilterComp from "./components/FilterComp";
 
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [surats, setSurats] = useState([])
+  const [filteredSurats, setFilteredSurats] = useState([]); // Data yang ditampilkan (hasil filter)
+  const [search, setSearch] = useState("");
+
+  function updateSearchValue(value) {
+      setSearch(value);
+
+      const hasilFilter = surats.filter((item) => {
+        return item.namaLatin.toLowerCase().includes(value.toLowerCase());
+      });
+
+      setFilteredSurats(hasilFilter);
+  }
 
   async function getDataSurats() {
     const url = "https://equran.id/api/v2/surat";
@@ -19,6 +32,7 @@ export default function App() {
       // cek isi 
       // console.log(result);
       setSurats(result.data);
+      setFilteredSurats(result.data);
       // mengganti loading state jadi false untuk menghilangkan spinner 
       setLoading(false);
     } catch (error) {
@@ -42,9 +56,10 @@ export default function App() {
 
   // jika loaing false, return pake ini 
   return (
-    <div className="min-h-screen bg-fixed bg-[linear-gradient(0deg,rgba(5,13,255,1)_0%,rgba(9,9,121,1)_15%,rgba(3,0,0,1)_100%)] text-white flex items-center justify-center">
-      <div className="mx-15 my-5">
-        <CartComp data={surats} type="surats"/>
+    <div className="min-h-screen bg-fixed bg-[linear-gradient(0deg,rgba(5,13,255,1)_0%,rgba(9,9,121,1)_15%,rgba(3,0,0,1)_100%)] ">
+      <FilterComp updateSearchValue={updateSearchValue} />
+      <div className="mx-15 my-5 text-white flex items-center justify-center">
+        <CartComp data={filteredSurats} type="surats"/>
       </div>
     </div>
   )

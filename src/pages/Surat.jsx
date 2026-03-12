@@ -39,7 +39,7 @@ export default function Surat() {
         </div>
 
         {/* ayat  */}
-        <CardAyatComp data={surats} type="surat" />
+        <CardAyatComp data={surats} suratId={suratId} type="surat" />
       </div>
     </div>
   );
